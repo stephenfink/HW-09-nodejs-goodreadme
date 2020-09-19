@@ -4,7 +4,13 @@
 //GIVEN a command-line application that accepts user input
 //WHEN I am prompted for information about my application repository
 //THEN a quality, professional README.md is generated with the title of your project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-    
+    const fs = requirer("fs");
+    const inquirer = require("inquirer");
+    const util = require("util");
+
+    const writeFileAsync = util.promisify(fs.writeFile);
+
+
     function prompt(){
         return inquirer.prompt([
             {
@@ -41,7 +47,15 @@
             },
         ])
     }
-   
+   async function init(){
+       console.log("Start Readme")
+       try{
+       promptUser().then(function(response){
+           //this makes the readme
+       })
+    } catch(err){console.log(err)};
+   }
 //function 6        
     //WHEN I click on the links in the Table of Contents
     //THEN I am taken to the corresponding section of the README
+    init();
