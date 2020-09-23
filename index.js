@@ -8,6 +8,8 @@
     const inquirer = require("inquirer");
     const util = require("util");
 
+
+
     const writeFileAsync = util.promisify(fs.writeFile);
 
 
@@ -16,7 +18,13 @@
                 //prompt 1
                 type: "input",
                 message: "project title?",
-                name: "title"
+                name: "title",
+                default: "Project readme",
+                validate: function(answer){
+                    if (answer.length <1){
+                        return console.log("a title is needed");
+                    }return true;
+                }
         //WHEN I enter my project title
         //THEN this is displayed as the title of the README
             },
@@ -42,7 +50,13 @@
          //WHEN I enter my GitHub username
                 type: "input",
                 message: "Github username(s)",
-                name: "github"
+                name: "github",
+                default: "stephenfink",
+                validate: function (answer){
+                    if (answer.length < 1){
+                        return console.log("github username is needed");
+                    }return true
+                }
         //THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
 
             },
