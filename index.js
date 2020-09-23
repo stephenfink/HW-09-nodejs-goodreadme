@@ -54,6 +54,7 @@
             },
         ])
     }
+    prompt();
    async function init(){
        console.log("Start Readme")
        try{
