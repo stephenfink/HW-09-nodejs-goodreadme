@@ -11,8 +11,7 @@
     const writeFileAsync = util.promisify(fs.writeFile);
 
 
-    function prompt(){
-        return inquirer.prompt([
+   const questions = [
             {
                 //prompt 1
                 type: "input",
@@ -51,11 +50,9 @@
                  //prompt 5
         //WHEN I enter my email address
         //THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-            },
-        ])
-    }
-    prompt();
-   async function init(){
+            },]
+  
+   async function writeToFile(){
        console.log("Start Readme")
        try{
        promptUser().then(function(response){
@@ -75,4 +72,9 @@
 //function 6        
     //WHEN I click on the links in the Table of Contents
     //THEN I am taken to the corresponding section of the README
+
+    function init(){
+        inquirer.prompt(questions)
+    }
+    writeToFile();
     init();
