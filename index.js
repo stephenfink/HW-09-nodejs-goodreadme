@@ -31,6 +31,9 @@
             },
             {
                 //prompt 3
+                type: "input",
+                message: "License Please",
+                name: "license"
                 
         //WHEN I choose a license for my application from a list of options
         //THEN a badge for that license is added hear the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
@@ -38,12 +41,9 @@
             {
                 //prompt 4
          //WHEN I enter my GitHub username
-        //THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-
-            },
-            {
-                //prompt 4
-         //WHEN I enter my GitHub username
+                type: "input",
+                message: "Github username(s)",
+                name: "github"
         //THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
 
             },
@@ -60,7 +60,11 @@
        promptUser().then(function(response){
            let markDown = `#${response.title}
            ## Description
-           ${response.description}`
+           ${response.description}
+           ## License
+           ${response.license}
+           ## Contact Me for any questions or commits at:
+           ${response.github}`
 
            writeToFile("ReadMe.md", markDown)
            //this makes the readme
