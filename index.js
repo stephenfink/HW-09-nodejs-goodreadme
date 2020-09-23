@@ -58,6 +58,11 @@
        console.log("Start Readme")
        try{
        promptUser().then(function(response){
+           let markDown = `#${response.title}
+           ## Description
+           ${response.description}`
+
+           writeToFile("ReadMe.md", markDown)
            //this makes the readme
        })
     } catch(err){console.log(err)};
